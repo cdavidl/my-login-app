@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
 
@@ -8,14 +9,17 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-router;
-  constructor(private loginService: LoginService) { }
+// router;
+  constructor(
+    private router: Router,
+    private loginService: LoginService
+    ) { }
 
   ngOnInit() {
-    this.loginService.login('eve.holt@reqres.in', 'cityslicka').subscribe(
-      res => {
-        console.log(res);      
-    });
+    // this.loginService.login('eve.holt@reqres.in', 'cityslicka').subscribe(
+    //   res => {
+    //     console.log(res);      
+    // });
   }
 
   logIn(username: string, password: string, event: Event) {
@@ -33,12 +37,12 @@ router;
         
       },
 
-      // () => this.navigate()
+      () => this.navigate()
     );
 
   }
 
-  // navigate() {
-  //   this.router.navigateByUrl('/home');
-  // }
+  navigate() {
+    this.router.navigateByUrl('');
+  }
 }
