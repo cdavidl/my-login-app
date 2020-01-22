@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
+import { UserService } from '../user/user.service';
+
+import { UserInfo } from '../user/user.model';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +12,12 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-// router;
+  
+  usserLogged;
   constructor(
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private userService: UserService
     ) { }
 
   ngOnInit() {
@@ -20,6 +25,7 @@ export class LoginComponent implements OnInit {
     //   res => {
     //     console.log(res);      
     // });
+    // this.usserLogged = this.userService.getUserLoggedIn();
   }
 
   logIn(username: string, password: string, event: Event) {
@@ -29,7 +35,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(username, password).subscribe(
 
       res => {
-       console.log(res);
+      //  console.log(res);
+        let u: UserInfo = {username: username};        
+        this.userService.setUserLoggedIn(u);
 
       },
       error => {
