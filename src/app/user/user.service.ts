@@ -8,7 +8,7 @@ import { UserInfo } from './user.model';
   // }
 )
 export class UserService {
-  private isUserLoggedIn;
+  public isUserLoggedIn;
   public usserLogged:UserInfo;
 
   constructor() { 

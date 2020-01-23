@@ -9,10 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { UserService } from './user/user.service';
 
+import { CanactivateviaauthGuard } from './guards/canactivateviaauth.guard';
+import { ShopComponent } from './shop/shop.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +25,8 @@ import { UserService } from './user/user.service';
   ],
   providers: [
     LoginService,
-    UserService
+    UserService,
+    CanactivateviaauthGuard
   ],
   bootstrap: [AppComponent]
 })
